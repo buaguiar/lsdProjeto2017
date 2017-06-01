@@ -20,7 +20,7 @@ architecture Behavioral of CounterJog is
 
 begin
 
-p1:	process(clk)
+p1:	process(clk, s_pont1 , s_pont2)
 		begin
 			if(rising_edge(clk)) then
 				if(reset = '1') then

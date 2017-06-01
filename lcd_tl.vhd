@@ -22,7 +22,7 @@ entity lcd_tl is
 	 initialState : in std_logic;
 	 everySet : in std_logic; 
 	 winner   : in std_logic; 
-	 j, o, g, a, d, r, nX, n, h, u, s, e, t, y, i, m, b, p, k, barra, c, n1,   pontoExclamacao : in std_logic_vector(7 downto 0);
+	 j, o, g, a, d, r, nX, n, h, u, s, e, t, y, i, m, b, p, k, barra, c, nUM,   pontoExclamacao : in std_logic_vector(7 downto 0);
     lcd_on   : out   std_logic;
     lcd_blon : out   std_logic;
     lcd_rw   : out   std_logic;
@@ -79,7 +79,7 @@ architecture v1 of lcd_tl is
 	if(rising_edge(clock)) then
 		if (initialState = '1') then
 			line1 <= p & r & i & m & a & x"20" & o & x"20" & b & o & t & a & o & x"20_20_20";
-			line0 <= k & e & y & n1 & x"20" & p & barra & x"20" & c & o & m & e & c & a & r & x"20";
+			line0 <= k & e & y & nUM & x"20" & p & barra & x"20" & c & o & m & e & c & a & r & x"20";
 		elsif (everySet = '1') then
 			line1 <= j & o & g & a & d & o & r & nX & x"20" & g & a & n & h & o & u  & x"20";
 			line0 <= o & x"20" & s & e & t & pontoExclamacao & pontoExclamacao & pontoExclamacao & x"20_20_20_20_20_20_20_20";

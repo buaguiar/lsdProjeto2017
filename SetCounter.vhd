@@ -9,7 +9,8 @@ entity SetCounter is
 			setGanhou2     : in  std_logic;
 			setAtual       : out std_logic_vector(2 downto 0);
 			setPontuacao1  : out std_logic_vector(1 downto 0);
-			setPontuacao2  : out std_logic_vector(1 downto 0)); 
+			setPontuacao2  : out std_logic_vector(1 downto 0);
+			everySet       : out std_logic); 
 end SetCounter;
 
 architecture Behavioral of SetCounter is
@@ -19,11 +20,13 @@ architecture Behavioral of SetCounter is
 	signal s_setAtual : integer := 0;
 
 begin
-
-	process(clk)
+	
+	process(clk, s_setAtual)
 	begin
+		
 		if(rising_edge(clk)) then
 			if(reset = '1') then
+				everySet <= '0';
 				s_set1 <= 0;
 				s_set2 <= 0;
 				s_setAtual <= 0;
@@ -31,9 +34,11 @@ begin
 				setPontuacao1 <= "00";
 				setPontuacao2 <= "00";
 			elsif(setGanhou1 = '1') then
+				everySet <= '1';
 				s_setAtual <= s_setAtual + 1;
 				s_set1 <= s_set1 + 1;
 			elsif(setGanhou2 = '1') then
+				everySet <= '1';
 				s_setAtual <= s_setAtual + 1;
 				s_set2 <= s_set2 + 1;
 			end if;
