@@ -77,15 +77,17 @@ architecture v1 of lcd_tl is
   begin
 	
 	if(rising_edge(clock)) then
-		if (initialState = '1') then
-			line1 <= p & r & i & m & a & x"20" & o & x"20" & b & o & t & a & o & x"20_20_20";
-			line0 <= k & e & y & nUM & x"20" & p & barra & x"20" & c & o & m & e & c & a & r & x"20";
+		if (winner = '1') then
+			line0 <= j & o & g & a & d & o & r & nX & x"20" & g & a & n & h & o & u  & x"20";
+			line1 <= o & x"20" & j & o & g & o & pontoExclamacao & pontoExclamacao & pontoExclamacao & x"20_20_20_20_20_20_20";
+	
+		elsif (initialState = '1') then
+			line0 <= p & r & i & m & a & x"20" & o & x"20" & b & o & t & a & o & x"20_20_20";
+			line1 <= k & e & y & nUM & x"20" & p & barra & x"20" & c & o & m & e & c & a & r & x"20";
 		elsif (everySet = '1') then
-			line1 <= j & o & g & a & d & o & r & nX & x"20" & g & a & n & h & o & u  & x"20";
-			line0 <= o & x"20" & s & e & t & pontoExclamacao & pontoExclamacao & pontoExclamacao & x"20_20_20_20_20_20_20_20";
-		elsif (winner = '1') then
-			line1 <= j & o & g & a & d & o & r & nX & x"20" & g & a & n & h & o & u  & x"20";
-			line0 <= o & x"20" & j & o & g & o & pontoExclamacao & pontoExclamacao & pontoExclamacao & x"20_20_20_20_20_20_20";
+			line0 <= j & o & g & a & d & o & r & nX & x"20" & g & a & n & h & o & u  & x"20";
+			line1 <= o & x"20" & s & e & t & pontoExclamacao & pontoExclamacao & pontoExclamacao & x"20_20_20_20_20_20_20_20";
+		
 		end if;
 	end if;
   end process;

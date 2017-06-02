@@ -27,7 +27,7 @@ p1:	process(clk, s_pont1 , s_pont2)
 					s_pont1 <= 0;
 					s_pont2 <= 0;
 					setGanhou1 <= '0';
-					setGanhou2 <= '0';
+					setGanhou2 <= '0';					
 				elsif(s_pont1 >= 25) and (abs(s_pont1-s_pont2) >= 2) then
 					setGanhou1 <= '1';
 				elsif(s_pont2 >= 25) and (abs(s_pont2-s_pont1) >= 2) then

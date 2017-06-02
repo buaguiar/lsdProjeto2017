@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Voleibol
-Thu Jun 01 17:33:30 2017
+Sat Jun 03 00:31:56 2017
 Quartus Prime Version 15.1.1 Build 189 12/02/2015 SJ Lite Edition
 
 
@@ -13,27 +13,28 @@ Quartus Prime Version 15.1.1 Build 189 12/02/2015 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |Voleibol|lcd_tl:inst2|lcd_controller:ca|state
-  9. Registers Protected by Synthesis
- 10. Registers Removed During Synthesis
- 11. Removed Registers Triggering Further Register Optimizations
- 12. General Register Statistics
- 13. Inverted Register Statistics
- 14. Multiplexer Restructuring Statistics (Restructuring Performed)
- 15. Source assignments for lcd_tl:inst2|lcd_controller:ca
- 16. Parameter Settings for User Entity Instance: lcd_tl:inst2|lcd_controller:ca
- 17. Parameter Settings for User Entity Instance: debouncer:inst22
- 18. Parameter Settings for User Entity Instance: debouncer:inst23
- 19. Parameter Settings for User Entity Instance: debouncer:inst24
- 20. Parameter Settings for User Entity Instance: debouncer:inst25
- 21. Parameter Settings for Inferred Entity Instance: BCDconvert:inst15|lpm_divide:Mod0
- 22. Parameter Settings for Inferred Entity Instance: BCDconvert:inst15|lpm_divide:Div0
- 23. Parameter Settings for Inferred Entity Instance: BCDconvert:inst16|lpm_divide:Mod0
- 24. Parameter Settings for Inferred Entity Instance: BCDconvert:inst16|lpm_divide:Div0
- 25. Port Connectivity Checks: "lcd_tl:inst2|lcd_controller:ca"
- 26. Post-Synthesis Netlist Statistics for Top Partition
- 27. Elapsed Time Per Partition
- 28. Analysis & Synthesis Messages
+  8. State Machine - |Voleibol|StateMachine:inst|s_currentState
+  9. State Machine - |Voleibol|lcd_tl:inst2|lcd_controller:ca|state
+ 10. Registers Protected by Synthesis
+ 11. User-Specified and Inferred Latches
+ 12. Registers Removed During Synthesis
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Source assignments for lcd_tl:inst2|lcd_controller:ca
+ 17. Parameter Settings for User Entity Instance: lcd_tl:inst2|lcd_controller:ca
+ 18. Parameter Settings for User Entity Instance: debouncer:inst22
+ 19. Parameter Settings for User Entity Instance: debouncer:inst23
+ 20. Parameter Settings for User Entity Instance: debouncer:inst24
+ 21. Parameter Settings for User Entity Instance: debouncer:inst25
+ 22. Parameter Settings for Inferred Entity Instance: BCDconvert:inst15|lpm_divide:Mod0
+ 23. Parameter Settings for Inferred Entity Instance: BCDconvert:inst15|lpm_divide:Div0
+ 24. Parameter Settings for Inferred Entity Instance: BCDconvert:inst16|lpm_divide:Mod0
+ 25. Parameter Settings for Inferred Entity Instance: BCDconvert:inst16|lpm_divide:Div0
+ 26. Port Connectivity Checks: "lcd_tl:inst2|lcd_controller:ca"
+ 27. Post-Synthesis Netlist Statistics for Top Partition
+ 28. Elapsed Time Per Partition
+ 29. Analysis & Synthesis Messages
 
 
 
@@ -60,15 +61,15 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jun 01 17:33:30 2017       ;
+; Analysis & Synthesis Status        ; Successful - Sat Jun 03 00:31:56 2017       ;
 ; Quartus Prime Version              ; 15.1.1 Build 189 12/02/2015 SJ Lite Edition ;
 ; Revision Name                      ; Voleibol                                    ;
 ; Top-level Entity Name              ; Voleibol                                    ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 740                                         ;
-;     Total combinational functions  ; 739                                         ;
-;     Dedicated logic registers      ; 267                                         ;
-; Total registers                    ; 267                                         ;
+; Total logic elements               ; 770                                         ;
+;     Total combinational functions  ; 768                                         ;
+;     Dedicated logic registers      ; 279                                         ;
+; Total registers                    ; 279                                         ;
 ; Total pins                         ; 80                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -215,20 +216,20 @@ agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 740            ;
+; Estimated Total logic elements              ; 770            ;
 ;                                             ;                ;
-; Total combinational functions               ; 739            ;
+; Total combinational functions               ; 768            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 218            ;
-;     -- 3 input functions                    ; 206            ;
-;     -- <=2 input functions                  ; 315            ;
+;     -- 4 input functions                    ; 234            ;
+;     -- 3 input functions                    ; 209            ;
+;     -- <=2 input functions                  ; 325            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 392            ;
-;     -- arithmetic mode                      ; 347            ;
+;     -- normal mode                          ; 419            ;
+;     -- arithmetic mode                      ; 349            ;
 ;                                             ;                ;
-; Total registers                             ; 267            ;
-;     -- Dedicated logic registers            ; 267            ;
+; Total registers                             ; 279            ;
+;     -- Dedicated logic registers            ; 279            ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
 ; I/O pins                                    ; 80             ;
@@ -236,9 +237,9 @@ agreement for further details.
 ; Embedded Multiplier 9-bit elements          ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 267            ;
-; Total fan-out                               ; 3095           ;
-; Average fan-out                             ; 2.65           ;
+; Maximum fan-out                             ; 279            ;
+; Total fan-out                               ; 3218           ;
+; Average fan-out                             ; 2.67           ;
 +---------------------------------------------+----------------+
 
 
@@ -247,7 +248,7 @@ agreement for further details.
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                         ; Library Name ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------+--------------+
-; |Voleibol                                 ; 739 (3)           ; 267 (0)      ; 0           ; 0            ; 0       ; 0         ; 80   ; 0            ; |Voleibol                                                                                                                   ; work         ;
+; |Voleibol                                 ; 768 (3)           ; 279 (0)      ; 0           ; 0            ; 0       ; 0         ; 80   ; 0            ; |Voleibol                                                                                                                   ; work         ;
 ;    |BCDconvert:inst15|                    ; 37 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|BCDconvert:inst15                                                                                                 ; work         ;
 ;       |lpm_divide:Div0|                   ; 17 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|BCDconvert:inst15|lpm_divide:Div0                                                                                 ; work         ;
 ;          |lpm_divide_hhm:auto_generated|  ; 17 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|BCDconvert:inst15|lpm_divide:Div0|lpm_divide_hhm:auto_generated                                                   ; work         ;
@@ -267,13 +268,14 @@ agreement for further details.
 ;             |sign_div_unsign_9kh:divider| ; 20 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|BCDconvert:inst16|lpm_divide:Mod0|lpm_divide_k9m:auto_generated|sign_div_unsign_9kh:divider                       ; work         ;
 ;                |alt_u_div_64f:divider|    ; 20 (20)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|BCDconvert:inst16|lpm_divide:Mod0|lpm_divide_k9m:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider ; work         ;
 ;    |CounterJog:inst3|                     ; 250 (250)         ; 66 (66)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|CounterJog:inst3                                                                                                  ; work         ;
-;    |SetCounter:inst4|                     ; 4 (4)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|SetCounter:inst4                                                                                                  ; work         ;
-;    |StateMachine:inst|                    ; 2 (2)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|StateMachine:inst                                                                                                 ; work         ;
+;    |SetCounter:inst4|                     ; 10 (10)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|SetCounter:inst4                                                                                                  ; work         ;
+;    |StateMachine:inst|                    ; 4 (4)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|StateMachine:inst                                                                                                 ; work         ;
 ;    |debouncer:inst22|                     ; 35 (35)           ; 26 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|debouncer:inst22                                                                                                  ; work         ;
 ;    |debouncer:inst23|                     ; 35 (35)           ; 26 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|debouncer:inst23                                                                                                  ; work         ;
 ;    |debouncer:inst24|                     ; 35 (35)           ; 26 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|debouncer:inst24                                                                                                  ; work         ;
 ;    |debouncer:inst25|                     ; 35 (35)           ; 26 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|debouncer:inst25                                                                                                  ; work         ;
-;    |lcd_tl:inst2|                         ; 239 (98)          ; 92 (18)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|lcd_tl:inst2                                                                                                      ; work         ;
+;    |displayWinner:inst202|                ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|displayWinner:inst202                                                                                             ; work         ;
+;    |lcd_tl:inst2|                         ; 254 (113)         ; 98 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|lcd_tl:inst2                                                                                                      ; work         ;
 ;       |lcd_controller:ca|                 ; 141 (141)         ; 74 (74)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|lcd_tl:inst2|lcd_controller:ca                                                                                    ; work         ;
 ;    |seven_segment_decoder:inst17|         ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|seven_segment_decoder:inst17                                                                                      ; work         ;
 ;    |seven_segment_decoder:inst18|         ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|seven_segment_decoder:inst18                                                                                      ; work         ;
@@ -282,6 +284,18 @@ agreement for further details.
 ;    |seven_segment_decoder:inst21|         ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Voleibol|seven_segment_decoder:inst21                                                                                      ; work         ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------+
+; State Machine - |Voleibol|StateMachine:inst|s_currentState                                              ;
++---------------------------+---------------------------+-------------------------+-----------------------+
+; Name                      ; s_currentState.finalState ; s_currentState.JogarSet ; s_currentState.Inicio ;
++---------------------------+---------------------------+-------------------------+-----------------------+
+; s_currentState.Inicio     ; 0                         ; 0                       ; 0                     ;
+; s_currentState.JogarSet   ; 0                         ; 1                       ; 1                     ;
+; s_currentState.finalState ; 1                         ; 0                       ; 1                     ;
++---------------------------+---------------------------+-------------------------+-----------------------+
 
 
 Encoding Type: Safe One-Hot
@@ -319,45 +333,145 @@ Encoding Type: Safe One-Hot
 +-----------------------------------------------------------+------------------------------------------------------------------+--------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                                                                                                                                                 ;
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
-; Register name                                                                                                                                                                       ; Reason for Removal                           ;
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
-; SetCounter:inst4|setPontuacao1[0,1]                                                                                                                                                 ; Stuck at GND due to stuck port data_in       ;
-; SetCounter:inst4|setPontuacao2[0,1]                                                                                                                                                 ; Stuck at GND due to stuck port data_in       ;
-; lcd_tl:inst2|txd_request                                                                                                                                                            ; Stuck at VCC due to stuck port data_in       ;
-; displayWinner:inst202|winner                                                                                                                                                        ; Stuck at GND due to stuck port data_in       ;
-; displayWinner:inst202|numberX[1..7]                                                                                                                                                 ; Merged with displayWinner:inst202|numberX[0] ;
-; lcd_tl:inst2|line0[72,96,108,110,120,121,123,126]                                                                                                                                   ; Merged with lcd_tl:inst2|line0[104]          ;
-; lcd_tl:inst2|line1[27,30,38,46,48..50,54,73,78,94,96,102,104,110,113,118,126]                                                                                                       ; Merged with lcd_tl:inst2|line0[104]          ;
-; lcd_tl:inst2|line0[9,12,14,16,22,24,25,30,32,34,38,40,42,43,46,48..51,54,56,57,62,73..75,84,86,107,112,114,118]                                                                     ; Merged with lcd_tl:inst2|line0[100]          ;
-; lcd_tl:inst2|line1[24..26,32,42,44,51,57,62,72,74,75,88,98,99,107,116,124]                                                                                                          ; Merged with lcd_tl:inst2|line0[100]          ;
-; lcd_tl:inst2|line0[1..4,6..8,10,11,15,17..20,23,26..28,31,33,35,36,39,41,44,47,52,55,58..60,63,65..68,70,71,76,78,79,81..83,87..89,91,95,97,99,103,106,111,113,115,116,119,124,127] ; Merged with lcd_tl:inst2|line0[0]            ;
-; lcd_tl:inst2|line1[0..4,6,7,9,11,15,20,23,28,31,36,39,41,43,47,52,55,56,58..60,63,79,84,87,89,91,92,95,97,100,103,108,111,119,120,122,127]                                          ; Merged with lcd_tl:inst2|line0[0]            ;
-; lcd_tl:inst2|line0[64,80,90,92,94,98,105,122]                                                                                                                                       ; Merged with lcd_tl:inst2|line0[102]          ;
-; lcd_tl:inst2|line1[8,10,12,14,16..19,22,33..35,40,76,80..83,86,90,105,106,112,114,115,121,123]                                                                                      ; Merged with lcd_tl:inst2|line0[102]          ;
-; lcd_tl:inst2|line1[65..68,70,71]                                                                                                                                                    ; Merged with lcd_tl:inst2|line1[64]           ;
-; lcd_tl:inst2|line0[5,13,21,29,37,45,53,61,69,77,85,93,109,117,125]                                                                                                                  ; Merged with lcd_tl:inst2|line0[101]          ;
-; lcd_tl:inst2|line1[5,13,21,29,37,45,53,61,77,85,93,101,109,117,125]                                                                                                                 ; Merged with lcd_tl:inst2|line0[101]          ;
-; displayWinner:inst202|numberX[0]                                                                                                                                                    ; Stuck at GND due to stuck port data_in       ;
-; lcd_tl:inst2|line0[0]                                                                                                                                                               ; Stuck at GND due to stuck port data_in       ;
-; lcd_tl:inst2|line1[64]                                                                                                                                                              ; Stuck at GND due to stuck port data_in       ;
-; lcd_tl:inst2|line0[101]                                                                                                                                                             ; Stuck at VCC due to stuck port data_in       ;
-; lcd_tl:inst2|line1[69]                                                                                                                                                              ; Merged with lcd_tl:inst2|line0[102]          ;
-; SetCounter:inst4|s_setAtual[3..31]                                                                                                                                                  ; Lost fanout                                  ;
-; Total Number of Removed Registers = 296                                                                                                                                             ;                                              ;
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------+
++---------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                               ;
++----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal ; Free of Timing Hazards ;
++----------------------------------------------------+---------------------+------------------------+
+; displayWinner:inst202|numberX[0]                   ; GND                 ; yes                    ;
+; displayWinner:inst202|numberX[1]                   ; GND                 ; yes                    ;
+; Number of user-specified and inferred latches = 2  ;                     ;                        ;
++----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                            ;
-+-----------------------------------+---------------------------+------------------------------------------------------------------------+
-; Register name                     ; Reason for Removal        ; Registers Removed due to This Register                                 ;
-+-----------------------------------+---------------------------+------------------------------------------------------------------------+
-; SetCounter:inst4|setPontuacao1[1] ; Stuck at GND              ; displayWinner:inst202|winner, displayWinner:inst202|numberX[0],        ;
-;                                   ; due to stuck port data_in ; lcd_tl:inst2|line0[0], lcd_tl:inst2|line1[64], lcd_tl:inst2|line0[101] ;
-+-----------------------------------+---------------------------+------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                      ;
++----------------------------------------------------------------+----------------------------------------+
+; Register name                                                  ; Reason for Removal                     ;
++----------------------------------------------------------------+----------------------------------------+
+; lcd_tl:inst2|txd_request                                       ; Stuck at VCC due to stuck port data_in ;
+; lcd_tl:inst2|line0[6]                                          ; Merged with lcd_tl:inst2|line1[0]      ;
+; lcd_tl:inst2|line1[2,4,6,44]                                   ; Merged with lcd_tl:inst2|line1[0]      ;
+; lcd_tl:inst2|line0[20]                                         ; Merged with lcd_tl:inst2|line1[0]      ;
+; lcd_tl:inst2|line1[8,10]                                       ; Merged with lcd_tl:inst2|line1[0]      ;
+; lcd_tl:inst2|line0[28,36,92]                                   ; Merged with lcd_tl:inst2|line1[0]      ;
+; lcd_tl:inst2|line1[18,20]                                      ; Merged with lcd_tl:inst2|line1[0]      ;
+; lcd_tl:inst2|line0[52,56]                                      ; Merged with lcd_tl:inst2|line1[0]      ;
+; lcd_tl:inst2|line1[26,116,119]                                 ; Merged with lcd_tl:inst2|line1[0]      ;
+; lcd_tl:inst2|line0[60]                                         ; Merged with lcd_tl:inst2|line1[0]      ;
+; lcd_tl:inst2|line1[28]                                         ; Merged with lcd_tl:inst2|line1[0]      ;
+; lcd_tl:inst2|line0[66,70]                                      ; Merged with lcd_tl:inst2|line1[0]      ;
+; lcd_tl:inst2|line1[36]                                         ; Merged with lcd_tl:inst2|line1[0]      ;
+; lcd_tl:inst2|line0[84,120]                                     ; Merged with lcd_tl:inst2|line1[0]      ;
+; lcd_tl:inst2|line0[3]                                          ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line1[3]                                          ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line0[11]                                         ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line1[11,127]                                     ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line0[7,15]                                       ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line1[7]                                          ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line0[23,31]                                      ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line1[15]                                         ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line0[39]                                         ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line1[19]                                         ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line0[43,47]                                      ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line1[23]                                         ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line0[55,58]                                      ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line1[27]                                         ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line0[59,63]                                      ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line1[31]                                         ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line0[67,71]                                      ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line1[35]                                         ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line0[79]                                         ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line1[39]                                         ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line0[87,91,95]                                   ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line1[47]                                         ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line0[103,111]                                    ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line1[55]                                         ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line0[100,119,122]                                ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line1[59]                                         ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line0[127]                                        ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line1[52,63,65..67]                               ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line0[1,9]                                        ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line1[17,60]                                      ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line0[41]                                         ; Merged with lcd_tl:inst2|line1[1]      ;
+; lcd_tl:inst2|line1[125]                                        ; Merged with lcd_tl:inst2|line1[5]      ;
+; lcd_tl:inst2|line0[5,13,21,29]                                 ; Merged with lcd_tl:inst2|line1[5]      ;
+; lcd_tl:inst2|line1[13]                                         ; Merged with lcd_tl:inst2|line1[5]      ;
+; lcd_tl:inst2|line0[37,45]                                      ; Merged with lcd_tl:inst2|line1[5]      ;
+; lcd_tl:inst2|line1[21]                                         ; Merged with lcd_tl:inst2|line1[5]      ;
+; lcd_tl:inst2|line0[53,61]                                      ; Merged with lcd_tl:inst2|line1[5]      ;
+; lcd_tl:inst2|line1[29]                                         ; Merged with lcd_tl:inst2|line1[5]      ;
+; lcd_tl:inst2|line0[69,77]                                      ; Merged with lcd_tl:inst2|line1[5]      ;
+; lcd_tl:inst2|line1[37]                                         ; Merged with lcd_tl:inst2|line1[5]      ;
+; lcd_tl:inst2|line0[85,93]                                      ; Merged with lcd_tl:inst2|line1[5]      ;
+; lcd_tl:inst2|line1[45]                                         ; Merged with lcd_tl:inst2|line1[5]      ;
+; lcd_tl:inst2|line0[101,109]                                    ; Merged with lcd_tl:inst2|line1[5]      ;
+; lcd_tl:inst2|line1[53]                                         ; Merged with lcd_tl:inst2|line1[5]      ;
+; lcd_tl:inst2|line0[117,125]                                    ; Merged with lcd_tl:inst2|line1[5]      ;
+; lcd_tl:inst2|line1[61,69,77,85,93]                             ; Merged with lcd_tl:inst2|line1[5]      ;
+; lcd_tl:inst2|line1[62]                                         ; Merged with lcd_tl:inst2|line1[9]      ;
+; lcd_tl:inst2|line0[51,75]                                      ; Merged with lcd_tl:inst2|line1[9]      ;
+; lcd_tl:inst2|line1[43]                                         ; Merged with lcd_tl:inst2|line1[9]      ;
+; lcd_tl:inst2|line0[99]                                         ; Merged with lcd_tl:inst2|line1[9]      ;
+; lcd_tl:inst2|line1[51]                                         ; Merged with lcd_tl:inst2|line1[9]      ;
+; lcd_tl:inst2|line0[25,42,107,124]                              ; Merged with lcd_tl:inst2|line1[9]      ;
+; lcd_tl:inst2|line1[25]                                         ; Merged with lcd_tl:inst2|line1[9]      ;
+; lcd_tl:inst2|line0[57,74]                                      ; Merged with lcd_tl:inst2|line1[9]      ;
+; lcd_tl:inst2|line0[24,26,32]                                   ; Merged with lcd_tl:inst2|line1[12]     ;
+; lcd_tl:inst2|line1[14]                                         ; Merged with lcd_tl:inst2|line1[12]     ;
+; lcd_tl:inst2|line0[98]                                         ; Merged with lcd_tl:inst2|line1[12]     ;
+; lcd_tl:inst2|line1[16,46]                                      ; Merged with lcd_tl:inst2|line1[12]     ;
+; lcd_tl:inst2|line0[44]                                         ; Merged with lcd_tl:inst2|line1[12]     ;
+; lcd_tl:inst2|line1[22,24,118]                                  ; Merged with lcd_tl:inst2|line1[12]     ;
+; lcd_tl:inst2|line0[62]                                         ; Merged with lcd_tl:inst2|line1[12]     ;
+; lcd_tl:inst2|line1[30,32]                                      ; Merged with lcd_tl:inst2|line1[12]     ;
+; lcd_tl:inst2|line0[72]                                         ; Merged with lcd_tl:inst2|line1[12]     ;
+; lcd_tl:inst2|line1[34,38,40,42,48]                             ; Merged with lcd_tl:inst2|line1[12]     ;
+; lcd_tl:inst2|line1[41]                                         ; Merged with lcd_tl:inst2|line1[33]     ;
+; lcd_tl:inst2|line0[89,97]                                      ; Merged with lcd_tl:inst2|line1[33]     ;
+; lcd_tl:inst2|line1[68,70,71]                                   ; Merged with lcd_tl:inst2|line1[33]     ;
+; lcd_tl:inst2|line0[108]                                        ; Merged with lcd_tl:inst2|line1[33]     ;
+; lcd_tl:inst2|line1[76,78,79,87,91,95,103,106,111,113,124]      ; Merged with lcd_tl:inst2|line1[33]     ;
+; lcd_tl:inst2|line0[0]                                          ; Merged with lcd_tl:inst2|line1[33]     ;
+; lcd_tl:inst2|line1[58,115]                                     ; Merged with lcd_tl:inst2|line1[33]     ;
+; lcd_tl:inst2|line0[2,4]                                        ; Merged with lcd_tl:inst2|line1[33]     ;
+; lcd_tl:inst2|line1[50,57]                                      ; Merged with lcd_tl:inst2|line1[49]     ;
+; lcd_tl:inst2|line0[88]                                         ; Merged with lcd_tl:inst2|line1[49]     ;
+; lcd_tl:inst2|line1[54,73,75,84,100]                            ; Merged with lcd_tl:inst2|line1[49]     ;
+; lcd_tl:inst2|line0[116]                                        ; Merged with lcd_tl:inst2|line1[49]     ;
+; lcd_tl:inst2|line1[74,112,114]                                 ; Merged with lcd_tl:inst2|line1[49]     ;
+; lcd_tl:inst2|line1[86,107]                                     ; Merged with lcd_tl:inst2|line1[56]     ;
+; lcd_tl:inst2|line0[81,105,114,121]                             ; Merged with lcd_tl:inst2|line1[64]     ;
+; lcd_tl:inst2|line1[80]                                         ; Merged with lcd_tl:inst2|line1[64]     ;
+; lcd_tl:inst2|line0[112]                                        ; Merged with lcd_tl:inst2|line1[64]     ;
+; lcd_tl:inst2|line1[90,94,98,102,105]                           ; Merged with lcd_tl:inst2|line1[64]     ;
+; lcd_tl:inst2|line0[8]                                          ; Merged with lcd_tl:inst2|line1[64]     ;
+; lcd_tl:inst2|line0[73,110,113,118]                             ; Merged with lcd_tl:inst2|line1[72]     ;
+; lcd_tl:inst2|line1[96,110]                                     ; Merged with lcd_tl:inst2|line1[72]     ;
+; lcd_tl:inst2|line0[94]                                         ; Merged with lcd_tl:inst2|line1[72]     ;
+; lcd_tl:inst2|line1[82,83,88,89,97,99]                          ; Merged with lcd_tl:inst2|line1[81]     ;
+; lcd_tl:inst2|line1[109,117]                                    ; Merged with lcd_tl:inst2|line1[101]    ;
+; lcd_tl:inst2|line1[108]                                        ; Merged with lcd_tl:inst2|line1[104]    ;
+; lcd_tl:inst2|line0[30,38,46,48,50,54,78,102]                   ; Merged with lcd_tl:inst2|line1[120]    ;
+; lcd_tl:inst2|line1[121,123]                                    ; Merged with lcd_tl:inst2|line1[120]    ;
+; lcd_tl:inst2|line0[10,12,14,16,18,22,34,40,68,76,80,82,86,106] ; Merged with lcd_tl:inst2|line1[122]    ;
+; lcd_tl:inst2|line0[27,49,96,104,126]                           ; Merged with lcd_tl:inst2|line1[126]    ;
+; lcd_tl:inst2|line0[19,33,35,83,90,115,123]                     ; Merged with lcd_tl:inst2|line0[17]     ;
+; lcd_tl:inst2|line1[1,33]                                       ; Merged with lcd_tl:inst2|line1[0]      ;
+; lcd_tl:inst2|line1[101]                                        ; Merged with lcd_tl:inst2|line1[5]      ;
+; lcd_tl:inst2|line1[12,49]                                      ; Merged with lcd_tl:inst2|line1[9]      ;
+; lcd_tl:inst2|line1[122]                                        ; Merged with lcd_tl:inst2|line1[64]     ;
+; lcd_tl:inst2|line0[17]                                         ; Merged with lcd_tl:inst2|line1[64]     ;
+; lcd_tl:inst2|line1[120,126]                                    ; Merged with lcd_tl:inst2|line1[72]     ;
+; lcd_tl:inst2|line1[0]                                          ; Stuck at GND due to stuck port data_in ;
+; lcd_tl:inst2|line1[5]                                          ; Stuck at VCC due to stuck port data_in ;
+; StateMachine:inst|s_currentState.finalState                    ; Lost fanout                            ;
+; SetCounter:inst4|s_setAtual[3..31]                             ; Lost fanout                            ;
+; SetCounter:inst4|s_set2[2..31]                                 ; Lost fanout                            ;
+; SetCounter:inst4|s_set1[2..31]                                 ; Lost fanout                            ;
+; Total Number of Removed Registers = 338                        ;                                        ;
++----------------------------------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -365,12 +479,12 @@ Encoding Type: Safe One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 267   ;
-; Number of registers using Synchronous Clear  ; 69    ;
+; Total registers                              ; 279   ;
+; Number of registers using Synchronous Clear  ; 71    ;
 ; Number of registers using Synchronous Load   ; 98    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 131   ;
+; Number of registers using Clock Enable       ; 139   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -396,18 +510,19 @@ Encoding Type: Safe One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                 ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |Voleibol|SetCounter:inst4|s_setAtual[11]                  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |Voleibol|CounterJog:inst3|s_pont1[22]                     ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |Voleibol|CounterJog:inst3|s_pont2[7]                      ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |Voleibol|lcd_tl:inst2|line0[102]                          ;
-; 3:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |Voleibol|debouncer:inst24|timer_counter[1]                ;
-; 3:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |Voleibol|debouncer:inst22|timer_counter[7]                ;
-; 3:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |Voleibol|debouncer:inst25|timer_counter[1]                ;
-; 3:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |Voleibol|debouncer:inst23|timer_counter[17]               ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Voleibol|lcd_tl:inst2|lcd_controller:ca|enable_counter[2] ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |Voleibol|lcd_tl:inst2|lcd_controller:ca|delay_counter[19] ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |Voleibol|SetCounter:inst4|s_set2[2]                       ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |Voleibol|SetCounter:inst4|s_setAtual[29]                  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |Voleibol|CounterJog:inst3|s_pont1[28]                     ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |Voleibol|CounterJog:inst3|s_pont2[25]                     ;
+; 3:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |Voleibol|debouncer:inst23|timer_counter[1]                ;
+; 3:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |Voleibol|debouncer:inst24|timer_counter[21]               ;
+; 3:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |Voleibol|debouncer:inst22|timer_counter[0]                ;
+; 3:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |Voleibol|debouncer:inst25|timer_counter[20]               ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Voleibol|lcd_tl:inst2|line1[104]                          ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Voleibol|lcd_tl:inst2|line0[65]                           ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Voleibol|lcd_tl:inst2|lcd_controller:ca|enable_counter[3] ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |Voleibol|lcd_tl:inst2|lcd_controller:ca|delay_counter[0]  ;
 ; 4:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |Voleibol|lcd_tl:inst2|lcd_controller:ca|delay_counter[7]  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Voleibol|lcd_tl:inst2|line0[101]                          ;
 ; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |Voleibol|lcd_tl:inst2|lcd_controller:ca|state             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
 
@@ -586,27 +701,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 80                          ;
-; cycloneiii_ff         ; 267                         ;
-;     ENA               ; 58                          ;
-;     ENA SCLR          ; 67                          ;
+; cycloneiii_ff         ; 279                         ;
+;     ENA               ; 64                          ;
+;     ENA SCLR          ; 69                          ;
 ;     ENA SLD           ; 6                           ;
 ;     SCLR              ; 2                           ;
 ;     SLD               ; 92                          ;
-;     plain             ; 42                          ;
+;     plain             ; 46                          ;
 ; cycloneiii_io_obuf    ; 8                           ;
-; cycloneiii_lcell_comb ; 745                         ;
-;     arith             ; 347                         ;
+; cycloneiii_lcell_comb ; 774                         ;
+;     arith             ; 349                         ;
 ;         2 data inputs ; 207                         ;
-;         3 data inputs ; 140                         ;
-;     normal            ; 398                         ;
+;         3 data inputs ; 142                         ;
+;     normal            ; 425                         ;
 ;         0 data inputs ; 12                          ;
-;         1 data inputs ; 36                          ;
-;         2 data inputs ; 66                          ;
-;         3 data inputs ; 66                          ;
-;         4 data inputs ; 218                         ;
+;         1 data inputs ; 40                          ;
+;         2 data inputs ; 72                          ;
+;         3 data inputs ; 67                          ;
+;         4 data inputs ; 234                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 15.50                       ;
-; Average LUT depth     ; 6.07                        ;
+; Max LUT depth         ; 14.90                       ;
+; Average LUT depth     ; 5.94                        ;
 +-----------------------+-----------------------------+
 
 
@@ -615,7 +730,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:02     ;
+; Top            ; 00:00:07     ;
 +----------------+--------------+
 
 
@@ -625,7 +740,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 15.1.1 Build 189 12/02/2015 SJ Lite Edition
-    Info: Processing started: Thu Jun 01 17:33:15 2017
+    Info: Processing started: Sat Jun 03 00:31:33 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Voleibol -c Voleibol
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file counterjog.vhd
@@ -638,7 +753,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file debounc
     Info (12022): Found design unit 1: debouncer-v1 File: C:/LSD/LSDProjeto/debouncer.vhd Line: 32
     Info (12023): Found entity 1: debouncer File: C:/LSD/LSDProjeto/debouncer.vhd Line: 14
 Info (12021): Found 2 design units, including 1 entities, in source file statemachine.vhd
-    Info (12022): Found design unit 1: StateMachine-Behavioral File: C:/LSD/LSDProjeto/StateMachine.vhd Line: 18
+    Info (12022): Found design unit 1: StateMachine-Behavioral File: C:/LSD/LSDProjeto/StateMachine.vhd Line: 19
     Info (12023): Found entity 1: StateMachine File: C:/LSD/LSDProjeto/StateMachine.vhd Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file voleibol.bdf
     Info (12023): Found entity 1: Voleibol
@@ -660,14 +775,32 @@ Info (12021): Found 2 design units, including 1 entities, in source file lcd_tl.
 Info (12021): Found 2 design units, including 1 entities, in source file lcd_controller.vhd
     Info (12022): Found design unit 1: lcd_controller-v1 File: C:/LSD/LSDProjeto/lcd_controller.vhd Line: 41
     Info (12023): Found entity 1: lcd_controller File: C:/LSD/LSDProjeto/lcd_controller.vhd Line: 18
+Info (12021): Found 2 design units, including 1 entities, in source file testbench.vhd
+    Info (12022): Found design unit 1: Testbench-Stimulus File: C:/LSD/LSDProjeto/Testbench.vhd Line: 23
+    Info (12023): Found entity 1: Testbench File: C:/LSD/LSDProjeto/Testbench.vhd Line: 5
 Info (12127): Elaborating entity "Voleibol" for the top level hierarchy
 Info (12128): Elaborating entity "lcd_tl" for hierarchy "lcd_tl:inst2"
 Info (12129): Elaborating entity "lcd_controller" using architecture "A:v1" for hierarchy "lcd_tl:inst2|lcd_controller:ca" File: C:/LSD/LSDProjeto/lcd_tl.vhd Line: 68
 Info (12128): Elaborating entity "StateMachine" for hierarchy "StateMachine:inst"
+Warning (10492): VHDL Process Statement warning at StateMachine.vhd(53): signal "internalReset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/LSD/LSDProjeto/StateMachine.vhd Line: 53
+Warning (10492): VHDL Process Statement warning at StateMachine.vhd(65): signal "internalReset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/LSD/LSDProjeto/StateMachine.vhd Line: 65
+Warning (10492): VHDL Process Statement warning at StateMachine.vhd(69): signal "winner" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/LSD/LSDProjeto/StateMachine.vhd Line: 69
+Warning (10492): VHDL Process Statement warning at StateMachine.vhd(87): signal "internalReset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/LSD/LSDProjeto/StateMachine.vhd Line: 87
 Info (12128): Elaborating entity "debouncer" for hierarchy "debouncer:inst22"
-Info (12128): Elaborating entity "SetCounter" for hierarchy "SetCounter:inst4"
-Info (12128): Elaborating entity "CounterJog" for hierarchy "CounterJog:inst3"
 Info (12128): Elaborating entity "displayWinner" for hierarchy "displayWinner:inst202"
+Warning (10631): VHDL Process Statement warning at displayWinner.vhd(42): inferring latch(es) for signal or variable "numberX", which holds its previous value in one or more paths through the process File: C:/LSD/LSDProjeto/displayWinner.vhd Line: 42
+Info (10041): Inferred latch for "numberX[0]" at displayWinner.vhd(42) File: C:/LSD/LSDProjeto/displayWinner.vhd Line: 42
+Info (10041): Inferred latch for "numberX[1]" at displayWinner.vhd(42) File: C:/LSD/LSDProjeto/displayWinner.vhd Line: 42
+Info (10041): Inferred latch for "numberX[2]" at displayWinner.vhd(42) File: C:/LSD/LSDProjeto/displayWinner.vhd Line: 42
+Info (10041): Inferred latch for "numberX[3]" at displayWinner.vhd(42) File: C:/LSD/LSDProjeto/displayWinner.vhd Line: 42
+Info (10041): Inferred latch for "numberX[4]" at displayWinner.vhd(42) File: C:/LSD/LSDProjeto/displayWinner.vhd Line: 42
+Info (10041): Inferred latch for "numberX[5]" at displayWinner.vhd(42) File: C:/LSD/LSDProjeto/displayWinner.vhd Line: 42
+Info (10041): Inferred latch for "numberX[6]" at displayWinner.vhd(42) File: C:/LSD/LSDProjeto/displayWinner.vhd Line: 42
+Info (10041): Inferred latch for "numberX[7]" at displayWinner.vhd(42) File: C:/LSD/LSDProjeto/displayWinner.vhd Line: 42
+Info (12128): Elaborating entity "SetCounter" for hierarchy "SetCounter:inst4"
+Warning (10492): VHDL Process Statement warning at SetCounter.vhd(47): signal "s_set1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/LSD/LSDProjeto/SetCounter.vhd Line: 47
+Warning (10492): VHDL Process Statement warning at SetCounter.vhd(48): signal "s_set2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/LSD/LSDProjeto/SetCounter.vhd Line: 48
+Info (12128): Elaborating entity "CounterJog" for hierarchy "CounterJog:inst3"
 Info (12128): Elaborating entity "seven_segment_decoder" for hierarchy "seven_segment_decoder:inst17"
 Info (12128): Elaborating entity "displaySet" for hierarchy "displaySet:inst10"
 Info (12128): Elaborating entity "BCDconvert" for hierarchy "BCDconvert:inst15"
@@ -734,17 +867,17 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "HEX5[1]" is stuck at GND
     Warning (13410): Pin "HEX7[1]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 29 registers lost all their fanouts during netlist optimizations.
+Info (17049): 90 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 823 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 855 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 6 input pins
     Info (21059): Implemented 74 output pins
-    Info (21061): Implemented 743 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 32 warnings
-    Info: Peak virtual memory: 875 megabytes
-    Info: Processing ended: Thu Jun 01 17:33:30 2017
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:32
+    Info (21061): Implemented 775 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 39 warnings
+    Info: Peak virtual memory: 871 megabytes
+    Info: Processing ended: Sat Jun 03 00:31:56 2017
+    Info: Elapsed time: 00:00:23
+    Info: Total CPU time (on all processors): 00:00:35
 
 

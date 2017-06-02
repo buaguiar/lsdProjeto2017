@@ -44,5 +44,7 @@ begin
 			end if;
 		end if;
 		setAtual <= conv_std_logic_vector(s_setAtual,3);
+		setPontuacao1 <= conv_std_logic_vector(s_set1,2);
+		setPontuacao2 <= conv_std_logic_vector(s_set2,2);
 	end process;
 end Behavioral;

@@ -35,15 +35,13 @@ entity displayWinner is
 end displayWinner;
 
 architecture Behavioral of displayWinner is
-
-	signal s_set1 : integer := 0;
 	
 
 begin
 	
-	process(clk)
+	process(setPontuacao1, setPontuacao2)
 	begin
-		if(rising_edge(clk)) then
+		
 			if(setPontuacao1 = "11") then -- jogador1
 				winner <= '1';
 				numberX <= "00110001"; --ascii code
@@ -52,8 +50,9 @@ begin
 				numberX <= "00110010";
 			else
 				winner <= '0';
+				--numberX <= "00110001";
 			end if;
-		end if;
+		
 	end process;
 
 	

@@ -585,4 +585,5 @@ set_global_assignment -name VHDL_FILE displaySet.vhd
 set_global_assignment -name VHDL_FILE displayWinner.vhd
 set_global_assignment -name VHDL_FILE lcd_tl.vhd
 set_global_assignment -name VHDL_FILE lcd_controller.vhd
+set_global_assignment -name VHDL_FILE Testbench.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -8,6 +8,7 @@ entity StateMachine is
 		  jogador1Ponto  : in  std_logic; --KEY2
 		  jogador2Ponto  : in  std_logic; --KEY3
 		  resetJogo      : in  std_logic; --SW0
+		  winner         : in  std_logic;
 		  resetSetOutput : out std_logic;
 		  resetJogoOutput: out std_logic;
 		  jogador1Ganhou : out std_logic;
@@ -17,14 +18,19 @@ end StateMachine;
 
 architecture Behavioral of StateMachine is
 
-	type TState is (Inicio, JogarSet);
+	type TState is (Inicio, JogarSet, finalState);
 	signal s_currentState, s_nextState : TState;
+	signal internalReset : std_logic;
 
 begin
+	
+	
+	
 	sync_proc : process(clk)
 	begin
 		if (rising_edge(clk)) then
-			if (resetJogo = '1') then
+			internalReset <= resetJogo;
+			if (internalReset = '1') then
 				s_currentState <= Inicio;
 			else
 				s_currentState <= s_nextState;
@@ -34,6 +40,7 @@ begin
 
 	comb_proc : process(s_currentState, resetSetIn, jogarSetIn, jogador1Ponto, jogador2Ponto, resetJogo)
 	begin
+	
 		resetSetOutput  <= '0';
 		resetJogoOutput <= '0';
 		jogador1Ganhou  <= '0';
@@ -43,7 +50,7 @@ begin
 		case (s_currentState) is
 		when Inicio =>
 			initialState <= '1';
-			if(resetJogo = '1') then
+			if(internalReset = '1') then
 				resetSetOutput  <= '1';
 				resetJogoOutput <= '1';
 				s_nextState <= Inicio;
@@ -55,10 +62,14 @@ begin
 			end if;
 
 		when JogarSet =>
-			if(resetJogo = '1') then
+			if(internalReset = '1') then
 				resetSetOutput  <= '1';
 				resetJogoOutput <= '1';
 				s_nextState <= Inicio;
+			elsif (winner = '1') then
+				resetSetOutput  <= '1';
+				resetJogoOutput <= '1';
+				s_nextState <= finalState;
 			elsif (resetSetIn = '1') then
 				resetSetOutput  <= '1';
 				s_nextState <= JogarSet;
@@ -70,6 +81,15 @@ begin
 				s_nextState <= JogarSet;
 			else
 				s_nextState <= JogarSet;
+			end if;
+			
+		when finalState =>
+			if(internalReset = '1') then
+				resetSetOutput  <= '1';
+				resetJogoOutput <= '1';
+				s_nextState <= Inicio;
+			else
+				s_nextState <= finalState;
 			end if;
 		
 		end case;
